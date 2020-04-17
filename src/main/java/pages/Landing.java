@@ -13,7 +13,7 @@ public class Landing {
 		driver =passedDriver;
 	}
 	
-	
+	By agentName = By.className("mb-none");
 	By accessCodeField = By.id("search_acode");
 	By submitAgentCode = By.id("submit_agentcode");
 	By submitcode = By.id("submit_Agent");
@@ -21,15 +21,19 @@ public class Landing {
 	By repRegisteration = By.linkText("Rep Registration");
 	
 	
-	
+	public void accesscode(String code) {
+		driver.findElement(accessCodeField).sendKeys(code);
+
+	}
 	public void submitAgentCode() {
 		driver.findElement(submitAgentCode).click();
 	}
-	
-	public void accesscode(String Code) {
-		driver.findElement(accessCodeField).sendKeys(Code);
-
+	public String validateAgentName() {
+		
+		String str = driver.findElement(agentName).getText();
+		return str;
 	}
+	
 	 public void submitAgent() {
 		 driver.findElement(submitcode).click();
 	 }

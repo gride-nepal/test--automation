@@ -62,7 +62,7 @@
 //		Thread.sleep(5000); 
 //  }
 //
-//  @Test
+//  @Test(enabled= true)
 //  public void reg_info() throws InterruptedException {
 //	  RegType regType = new RegType(driver);
 //		regType.regtype("Individual");

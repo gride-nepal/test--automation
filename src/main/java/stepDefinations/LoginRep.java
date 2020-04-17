@@ -1,38 +1,57 @@
 package stepDefinations;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+
+import cucumber.api.java.Before;
+import cucumber.api.java.After;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import pages.GoogleHome;
+import pages.GoogleResult;
+import pages.Landing;
 
 public class LoginRep {
+	WebDriver driver;
+
+	@Before
+	public void setVariable() {
+		System.setProperty("webdriver.chrome.driver", "src/main/java/drivers/chromedriver");
+		 driver= new ChromeDriver();
+		 System.out.println("BEFORE METHOD");
+	}
+	
+	@After
+	public void closeBrowser() {
+		driver.quit();
+	}
 	
 	@Given("^a user is on landing page$")
-	public void a_user_is_on_landing_page() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	  
+	public void a_user_is_on_landing_page(){
+		
+		driver.get("https://www.google.com");
+	//	driver.get("https://premierenroll.com");
+		driver.manage().window().maximize();
+	}
+	
+	
+	@And("^a user search for ([^\"]*)$")
+	public void a_user_search_for(String keyword){
+		
+		GoogleHome gh = new GoogleHome(driver);
+		gh.serachKeyword(keyword);
 	}
 
-	@Given("^a user enters a agent id$")
-	public void a_user_enters_a_agent_id() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    
-	}
 
-	@When("^a user clicks submit button$")
-	public void a_user_clicks_submit_button() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	   
-	}
-
-	@Then("^a user lands on confirmation page$")
-	public void a_user_lands_on_confirmation_page() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	  
-	}
-	@Then("^a user land on confirmation page$")
-	public void a_user_land_on_confirmation_page() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	 
+	@Then("^a user lands on result page and verify ([^\"]*)$")
+	public void a_user_lands_on_result_page_and_verify(String agentName) throws InterruptedException {
+	GoogleResult gr = new GoogleResult(driver);
+		String actual = gr.getResultCount();
+	
+		Assert.assertEquals(actual, agentName);
 	}
 
 
