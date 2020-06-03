@@ -1,19 +1,15 @@
 Feature: Verify Agent Id in Rep Registration Page
 
 @weekly
-Scenario Outline: Agent Id in Rep Registration must match with agent id provided in landing page
+Scenario: Search by keywords on google
 Given a user is on landing page
-And a user search for <keyword>
-Then a user lands on result page and verify <results>
 
-Examples:
-|keyword | results |
-|Nepal | About|
+
 
 @manual
 Scenario Outline: Agent Id in Rep Registration must match with agent id provided in landing page
 Given a user is on landing page
-And a user search for <keyword>
+When a user search for <keyword>
 Then a user lands on result page and verify <results>
 
 Examples:

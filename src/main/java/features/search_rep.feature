@@ -1,6 +1,6 @@
 Feature: Verify Agent Id in Rep Registration Page
 
-@runMe
+@manual
 Scenario Outline: Agent Id in Rep Registration must match with agent id provided in landing page
 Given a user is on landing page
 And a user search for <keyword>

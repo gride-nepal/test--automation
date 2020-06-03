@@ -18,9 +18,7 @@ public class GoogleHome {
 	public void serachKeyword(String keyword) {
 		driver.findElement(searchField).sendKeys(keyword);
 		driver.findElement(searchField).sendKeys(Keys.ENTER);
-//		WebDriverWait wait=new WebDriverWait(driver, 20);
-//		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(submitButton)));
-//		driver.findElement(submitButton).click();
+
 		
 	}
 

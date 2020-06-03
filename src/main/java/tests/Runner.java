@@ -12,7 +12,6 @@ import cucumber.api.junit.Cucumber;
 		tags= {"~@manual"}
 		)						
 
-public class Runner{		
+public class Runner{
 
-	
 }
